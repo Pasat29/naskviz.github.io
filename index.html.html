@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Kviz</title>
+    <style>
+      body {
+        background-color: #1f2024;
+        background-image: linear-gradient(to right, rgba(40,42,47,.9), rgba(40,42,47,.5), rgba(40,42,47,.9));
+        color: #fff;
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 2em;
+        text-align: center;
+      }
+      p {
+        font-size: 1.5em;
+        margin-bottom: 1em;
+      }
+      form {
+        text-align: center;
+      }
+      input[type=text] {
+        padding: 0.5em;
+        font-size: 1.5em;
+        border-radius: 5px;
+        border: none;
+        background-color: #555;
+        color: white;
+        margin-bottom: 1em;
+      }
+      button[type=button] {
+        padding: 0.5em 1em;
+        font-size: 1.5em;
+        border-radius: 5px;
+        border: none;
+        background-color: #555;
+        color: white;
+      }
+      #vysledek {
+        font-size: 1.5em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Otázka:</h1>
+    <p>Jaké je nejrychlejší zvíře, které běhá?</p>
+    <form>
+      <input type="text" id="odpoved" name="odpoved" onkeypress="if (event.keyCode === 13) { kontrolaOdpovedi(); return false; }"><br>
+      <button type="button" onclick="kontrolaOdpovedi()">Odeslat odpověď</button>
+    </form>
+    <p id="vysledek"></p>
+
+    <script>
+      function kontrolaOdpovedi() {
+        var spravnaOdpoved = "gepard";
+        var odpovedUzivatele = document.getElementById("odpoved").value;
+
+        if (odpovedUzivatele.toLowerCase() == spravnaOdpoved) {
+          document.getElementById("vysledek").innerHTML = "Odpověď je správná!";
+        } else {
+          document.getElementById("vysledek").innerHTML = "Odpověď je špatná.";
+        }
+
+        // vynulování hodnoty pole
+        document.getElementById("odpoved").value = "";
+      }
+    </script>
+  </body>
+</html>
